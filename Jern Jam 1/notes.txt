@@ -1,0 +1,149 @@
+never use unity character controller ever again i wanna kms
+
+Concept:
+- time reversal/forward/stop mechanic
+- use on objects or self
+- time stopped objects can be used as platforms
+- can pass through objects but cannot stop when colliding
+- when the player dies they can reverse themselves to undo death
+
+Levels:
+General ideas:
+- elevate yourself using a cube
+- drop a cube and then elevate yourself with it
+- pause yourself to switch moving platforms
+- reverse yourself/cube to cross back over a new gap or closed door
+- reverse own death
+- visit parts of your own/cube history backwards to unlock something one by one
+- alternate reversing platforms to zigzag between walls over a gap
+- reverse yourself and pause so you have line of sight to an object
+
+1. Prologue
+- Prologue (optional)
+	- spawn in a passage
+	- leads to a room with a big entrance in front and a side passage
+	- when you enter the room, a boulder rolls in and blocks big entrance
+	- enter side passage, see time control watch
+	- when you pick it up, ceiling caves in and crushes you
+	- use time control on yourself to unsmoosh yourself
+- Crumbled bridge - reverse to repair
+- Crumbled ceiling - reverse and stop to make platform
+- Broken elevator going down - reverse to get in, forward to descend
+	- if you release too early you die of fall damage
+2. Cube Riding
+- Cube falls, reverse cube to ride it up
+- Drop cube, then reverse to ride it up
+- Pause cube to cross gap
+3. Doors Intro
+- Cube and button open door
+- Move cubes over row of buttons and reverse one by one to open row of doors
+4. Pause Intro
+- Player pause themselves, moving platforms switch underneath
+- Same with cube to open door at the end
+5. Doors Phasing
+- Cube pass through door
+	- Fetch a cube from a previous room by taking a cube from the next room, replacing the old cube with it, then rewinding the new cube
+- Player pass through door
+- add side window room so you can't get stuck?
+	- see if you can cheese
+	- cube spawner is probably better
+cancelled level.
+- Player reverses themselves through a door and pause themselves so they have line of sight to an object to time control it
+
+Pick up/time control booleans:
+x Can't pick up twice (_objectGrabbable null or not)
+x Can't time control twice (_objectTimeControllable null or not)
+x Can't time control while picking up (timeControl.canTimeControl)
+x Can't pick up while time controlling (pickUpDrop.canPickUp)
+x Object can't be picked up while being time controlled (canPickUp)
+
+Time control UI:
+x Crosshair changes based on what you're looking at
+	x Nothing
+	x Time controllable
+	x Paused
+	- Time controlling (red blinking?)
+	- (optional) picking up item
+x Bar appears for object's history
+x Bar for player history
+x Pause button for player paused
+x highlight current object through walls
+x show path through walls when hovering
+
+Sounds:
+x Cube grab sound
+x Button press/unpress sound (manual too)
+x Door open/close sound
+x Exit sound
+x Time controlling sounds
+	x Controlling
+	x Pause
+	x Release
+x Landslide sounds
+	x for boulder, watch get event, bridge events
+x Fall damage sound
+- Acquiring time control sounds
+
+Todo:
+do now/finished
+x Figure out how to make levels
+x Make a test level with a cube
+x Implement carrying around cube
+x Implement time control with cube
+x figure out can pick up/can time control booleans
+x make it so can't drop objects when intersecting with player
+x set velocities = 0 while controlling, disable colliders? or make kinematic
+x implement pause
+x Implement time control with player
+x Time control UI
+x test object penetrating corners when corners overlapping
+x finish base 4 levels
+- make prologue level
+	x figure out how to make natural looking cave level texture/model
+	x decide between bridge/boulder
+		x bridge:
+			x natural or sci-fi bridge
+			x how to make crumbling look natural
+		x boulders and smaller rocks
+		- screen shake
+	- time control watch power-up
+		- landslide event
+	x crumbled ceiling
+	- elevator
+		- player death when falling too far (reversible)
+	x facility entrance
+	
+
+do at some point
+- Show move controls at first level
+x Controls UI
+x Fix door sound playing at start
+x Pick up cube while time controlling and time controlling cube while holding
+- Handle pinching
+	- Death on pinch
+	- OR make collider on pinch
+	- OR move aside on pinch
+	- OR do something with rigidbodies idk
+x Fix player not clipping through moving platforms
+x Fix cube trailing behind on moving platforms
+x Allow player to drop cube closer
+x Add delay at endpoints for moving platforms
+
+optional
+- Add trigger to bridge pit to highlight reverse self? Or just make stairs
+- Fix cube not being able to be lifted when moving up on moving platform
+- Fix cube not rotating sometimes
+- Increase stairs climb speed
+- Make exit particles look better
+- Fix cube jiggling at corners
+- Give option to turn off paths
+- Handle running out of memory for history
+- Disable time control release when inside an object?
+- Smooth time control using lerp/slerp
+- Textures?
+- First person viewpoint stuff?
+
+never do:
+- move along with time controlled cubes you're standing on
+	-wtf???
+	-cancelled
